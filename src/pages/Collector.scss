@@ -1,0 +1,55 @@
+@import '../styles/variables.scss';
+
+$topMargin: 70px;
+// $я очень сонный: 250px;
+
+#main-wrapper {
+    width: 100%;
+
+
+    #header-wrapper {
+        width: 100%;
+        height: $topMargin;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        z-index: 100 !important;
+        background-color: $--base-background;
+    }
+
+    #side-menu {
+        position: fixed;
+        float: left;
+        // background-color: #0f0f0fef;
+        height: 100%;
+        position: fixed;
+        overflow: auto;
+        z-index: 100 !important;
+        top: $topMargin;
+        left: 0;
+        background-color: $--base-background;
+        
+        &.side-fixed {
+            transition: 0.1s all;
+            background-color: $--base-background;
+        }
+    }
+
+    #main-contents {
+        float: left;
+        // padding: 20px;
+        margin-top: $topMargin;
+        margin-bottom: 0;
+        margin-right: 0;
+        padding-right: 15px;
+    }
+
+    .is-fixed-active{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        background-color: #0f0f0fcb;
+        z-index: 90 !important;
+    }
+}
