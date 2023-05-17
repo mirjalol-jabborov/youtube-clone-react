@@ -1,0 +1,2 @@
+export const TOGGLE_SIDE_MENU = "SIDE_MENU/TOGGLE_SIDE_MENU";
+export const IS_FIXED = "SIDE_MENU/IS_FIXED";
