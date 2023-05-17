@@ -1,0 +1,100 @@
+@import '../../styles/variables.scss';
+
+.header {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &-nav {
+        width: 100%;
+        padding: 0 15px;
+
+        &-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        button {
+            color: $--text-primary !important;
+
+            &:hover {
+                background-color: $--black-32;
+            }
+        }
+
+        img {
+            width: 100px;
+            // height: 100px;
+        }
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+    }
+
+    &__search-form {
+        display: flex;
+        align-items: center;
+        // gap: 10px;
+
+        &__input {
+            border: 1px solid $--black-32;
+
+            background-color: $--black-12;
+            border-radius: 22px 0 0 22px;
+            padding: 5px 0px 5px 20px;
+            height: 40px;
+            outline: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: $--text-primary;
+            width: 450px;
+
+                &:focus {
+                border: 1px solid $--blue;
+            }
+        }
+
+
+        &__button {
+            color: #000;
+
+            background-color: $--black-32;
+            padding: 0 15px;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid $--black-47;
+            border-left: none;
+            border-radius: 0 22px 22px 0;
+            color: $--grey;
+
+
+            // &:hover {
+            //     background-color: #EBEBEB;
+            // }
+        }
+
+
+
+
+    }
+
+    &__user-img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        overflow: hidden;
+        // margin-right: 10px;
+    }
+
+
+}

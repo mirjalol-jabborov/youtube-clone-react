@@ -1,0 +1,101 @@
+@import '/src/styles/variables.scss';
+
+$--video-height: 500px;
+$--video-width: 100%;
+
+.video {
+    height: 2000px;
+
+    &-wrapper {
+        max-width: 70%;
+    }
+
+    &-media {
+        height: $--video-height;
+        width: $--video-width;
+        position: relative;
+
+        iframe {
+            width: 100%;
+            height: $--video-height;
+            position: relative;
+            z-index: 10;
+        }
+    }
+
+    &-info {
+        // background: red;
+
+        &__title {
+            &__content {
+                word-break: break-word;
+                // font-family: "YouTube Sans", "Roboto", sans-serif;
+                font-size: 1.1rem;
+                line-height: 2.8rem;
+                font-weight: 600;
+            }
+        }
+
+        &__medium {
+            &__left {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                &__channel {
+                    display: flex;
+                    align-items: center;
+
+                    &__icon {
+                        img {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            margin-right: 10px;
+                        }
+                    }
+
+                    &__info {
+                        &__title {
+                            p {
+                                // font-family: "YouTube Sans", "Roboto", sans-serif;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                color: $--grey;
+                                line-height: 1.3rem;
+                            }
+                        }
+
+                        &__sub {
+                            p {
+                                // font-family: "YouTube Sans", "Roboto", sans-serif;
+                                font-size: 0.8rem;
+                                font-weight: 400;
+                                color: #AAAAAA;
+                                line-height: 1.2rem;
+                            }
+                        }
+                    }
+                }
+
+                &__subscribe {
+                    button {
+                        background-color: $--white;
+                        color: $--black;
+                        padding: 8px 15px;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        border-radius: 25px;
+                        border: 1px solid $--black;
+                        cursor: pointer;
+
+
+                        &:hover {
+                            background-color: $--grey;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
