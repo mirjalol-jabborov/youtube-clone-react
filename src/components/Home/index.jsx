@@ -17,7 +17,7 @@ const Home = () => {
   }, []);
 
   const handleClick = () => {
-    dispatch(setVideos("Incode uz"));
+    dispatch(setVideos("Lil peep"));
   };
   return (
     <div className="home">
