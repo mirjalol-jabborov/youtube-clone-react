@@ -1,0 +1,235 @@
+@import '/src/styles/variables.scss';
+
+$--video-height: 500px;
+$--video-width: 100%;
+
+.video {
+    height: 2000px;
+
+    &-wrapper {
+        max-width: 70%;
+    }
+
+    &-media {
+        height: $--video-height;
+        width: $--video-width;
+        position: relative;
+
+        iframe {
+            width: 100%;
+            height: $--video-height;
+            position: relative;
+            z-index: 10;
+        }
+    }
+
+    &-info {
+        &__title {
+            &__content {
+                word-break: break-word;
+                // font-family: "YouTube Sans", "Roboto", sans-serif;
+                font-size: 1.1rem;
+                line-height: 2.8rem;
+                font-weight: 600;
+            }
+        }
+
+        &__medium {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &__left {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                &__channel {
+                    display: flex;
+                    align-items: center;
+
+                    &__icon {
+                        img {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            margin-right: 10px;
+                        }
+                    }
+
+                    &__info {
+                        &__title {
+                            p {
+                                // f    ont-family: "YouTube Sans", "Roboto", sans-serif;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                color: $--grey;
+                                line-height: 1.3rem;
+                            }
+                        }
+
+                        &__sub {
+                            p {
+                                // font-family: "YouTube Sans", "Roboto", sans-serif;
+                                font-size: 0.8rem;
+                                font-weight: 400;
+                                color: #AAAAAA;
+                                line-height: 1.2rem;
+                            }
+                        }
+                    }
+                }
+
+                &__subscribe {
+                    button {
+                        background-color: $--white;
+                        color: $--black;
+                        padding: 8px 15px;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        border-radius: 25px;
+                        border: 1px solid $--black;
+                        cursor: pointer;
+
+
+                        &:hover {
+                            background-color: $--grey;
+                        }
+                    }
+                }
+            }
+
+            &__right{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                &__likes {
+                    display: flex;
+                    align-items: center;
+                    // gap: 20px;
+                }
+                &__like {
+                    display: flex !important;
+                    width: 85px;
+                    border-top-left-radius: 25px;
+                    border-bottom-left-radius: 25px;
+                    gap: 7px;
+                }
+                
+                &__like, &__dislike, &__share {
+                    display: inline-block;
+                    height: 38px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: $--black-38;
+                    cursor: pointer;
+                    
+                    &:hover {
+                        background-color: $--black-47;
+                    }
+                }
+                &__dislike{
+                    width: 45px;
+                    border-top-right-radius: 25px;
+                    border-bottom-right-radius: 25px;
+                    position: relative;
+                    
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 1px;
+                        height: 20px;
+                        background-color: $--black-47;
+                        left: 0; 
+                    }
+                }
+
+                &__share{ 
+                    cursor: pointer;
+                    border-radius: 25px;
+                    width: 85px;
+                    &__icon {
+                        width: 25px;
+                        height: 25px;
+                    }
+                    &__text{
+                        // font-family: "YouTube Sans", "Roboto", sans-serif;
+                        font-size: 0.87rem;
+                        font-weight: 600;
+                        color: $--grey;
+                    }
+                }
+            }
+        }
+
+        &__more{
+            width: 100%;
+            background-color: $--black-38;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border: 1px solid $--black-32;
+
+            &_active:hover {
+                background-color: $--black-47;
+                cursor: pointer;
+            }
+
+            &:active {
+                background-color: $--black-38;
+                border : 1px solid $--black-47;
+            }
+
+            &__statistics{
+                display: flex;
+                align-items: center;
+                gap: 15px;
+
+                margin-bottom: 10px;
+                color: $--text-primary;
+                font-weight: 600;
+                font-size: 0.9rem;
+
+                &__hashtags {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    // color: #aaa;
+
+                    &__content {
+                        // font-family: "YouTube Sans", "Roboto", sans-serif;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        color: #AAAAAA;
+                        line-height: 1.2rem;
+                        cursor: pointer;
+                    }
+                }
+                .video-info__more__statistics__hashtags__active {
+                    .video-info__more__statistics__hashtags__content {
+                        color: $--blue;
+                    }
+                }
+            }
+
+            &__description{
+                // font-family: "YouTube Sans", "Roboto", sans-serif;
+                font-size: 0.9rem;
+                font-weight: 400;
+                line-height: 1.2rem;
+                cursor: pointer;
+            }
+
+        }
+        &__comment {
+            // background: red;
+            
+            &__content{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    }
+}
