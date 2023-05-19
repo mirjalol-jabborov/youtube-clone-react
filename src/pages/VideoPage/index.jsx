@@ -1,5 +1,5 @@
 import React from 'react'
-import Video from '../../components/video'
+import Video from '../../components/Video'
 
 const VideoPage = () => <Video/>
 

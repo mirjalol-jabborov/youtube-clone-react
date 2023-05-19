@@ -9,6 +9,7 @@ const initialState = {
     videos: [],
     video: {},
     channel: {},
+    comments: [],
 
     // playlists: [],=
     // channels: [],

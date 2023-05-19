@@ -12,9 +12,10 @@ export const setVideos = (videos = false) => {
     const response = await YT_API.get("search", {
         params: {
           part: "snippet",
-          maxResults: 5,
+          maxResults: 10,
           q: videos ? videos : "",
           type: "video",
+          videoDuration: "medium",
         },
       });
       dispatch(setVideosSuccess({ videos: response.data.items}));
@@ -45,6 +46,28 @@ export const setVideo = (videoId) => {
     }
   };
 }
+
+export const setVideoComments = (videoId) => {
+  return async (dispatch) => {
+    dispatch(setVideosLoading(true));
+    dispatch(setVideosError(null));
+    try { 
+      const response = await YT_API.get("commentThreads", {
+        params: {
+          part: "snippet",
+          videoId: videoId,
+          maxResults: 10,
+        },
+      });
+      dispatch(setVideosSuccess({ comments: response.data.items}));
+    } catch (error) {
+      dispatch(setVideosError(error));
+    } finally {
+      dispatch(setVideosLoading(false));
+    }
+  };
+}
+
 
 export const setChannel = (channelId) => {
   return async (dispatch) => {

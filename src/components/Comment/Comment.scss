@@ -1,0 +1,124 @@
+@import '/src/styles/variables.scss';
+
+.comment {
+    display: flex;
+    gap: 15px;
+    // align-items: center;
+
+    &__avatar {
+        img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        &__top {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+        }
+
+        &__author {
+            p {
+
+                font-size: 13.4px;
+                font-weight: 600;
+                color: $--text-primary;
+            }
+        }
+
+        &__time {
+            p {
+
+                font-size: 13px;
+                font-weight: 400;
+                color: #aaa;
+            }
+        }
+
+        &__text {
+            &__content {
+                font-size: 14px;
+                font-weight: 400;
+                color: $--text-primary;
+                line-height: 1.5;
+
+                a {
+                    color: $--blue;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            &__button {
+                background-color: transparent;
+                border: none;
+                color: #aaa;
+                font-size: 14px;
+                font-weight: 400;
+                cursor: pointer;
+                margin-top: 7px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &__bottom {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            &__like {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+
+                &__count {
+                    font-size: 13.3px;
+                    font-weight: 400;
+                    color: #aaa;
+                }
+            }
+
+            &__like,
+            &__dislike {
+                &__icon {
+                    cursor: pointer;
+                    border-radius: 50%;
+                    padding: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        background-color: $--black-47;
+                        // background-color: $--black-38;
+                    }
+
+                    svg {
+                        width: 22px;
+                        height: 22px;
+                        fill: #aaa;
+
+                        // &:hover {
+                        //     fill: $--blue;
+                        // }
+                    }
+                }
+            }
+        }
+    }
+}
