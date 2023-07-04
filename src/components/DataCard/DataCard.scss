@@ -12,6 +12,26 @@
     max-width: 400px;
     cursor: pointer;
 
+    @media screen and (max-width: 767px) {
+        max-width: 100%;
+
+        &__media {
+            min-height: 330px !important;
+        }
+    }
+
+    @media screen and (max-width: 590px) {
+        &__media {
+            min-height: 210px !important;
+        }
+    }
+
+    @media screen and (max-width: 445px) {
+        &__media {
+            min-height: 180px !important;
+        }
+    }
+
     &:hover &__media {
         border-radius: 0;
         transition: all 0.3s ease-in-out;
@@ -22,7 +42,7 @@
     }
 
     &__media {
-        min-width: 330px;
+        // min-width: 330px;
         min-height: 195px;
         max-height: 195px;
 
