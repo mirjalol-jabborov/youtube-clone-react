@@ -328,36 +328,37 @@ const Video = () => {
           </div>
           <div className="video-sidebar">
             {/* <ul className="video-sidebar__hashtags"></ul> */}
-            {resultData?.data?.video?.snippet?.tags.length > 3 && (
-              <ul className="video-sidebar__hashtags">
-                <li
-                  className="video-sidebar__hashtags__tag"
-                  onClick={() =>
-                    dispatch(
-                      setVideos(
-                        arrayToString(
-                          resultData?.data?.video?.snippet?.tags.slice(0, 3)
-                        ),
-                        8
+            {Array.isArray(resultData?.data?.video?.snippet?.tags) &&
+              resultData?.data?.video?.snippet?.tags.length > 3 && (
+                <ul className="video-sidebar__hashtags">
+                  <li
+                    className="video-sidebar__hashtags__tag"
+                    onClick={() =>
+                      dispatch(
+                        setVideos(
+                          arrayToString(
+                            resultData?.data?.video?.snippet?.tags.slice(0, 3)
+                          ),
+                          8
+                        )
                       )
-                    )
-                  }
-                >
-                  All
-                </li>
-                {resultData?.data?.video?.snippet?.tags
-                  .slice(0, 3)
-                  .map((tag, i) => (
-                    <li
-                      key={i}
-                      className="video-sidebar__hashtags__tag"
-                      onClick={() => dispatch(setVideos(tag, 8))}
-                    >
-                      {tag}
-                    </li>
-                  ))}
-              </ul>
-            )}
+                    }
+                  >
+                    All
+                  </li>
+                  {resultData?.data?.video?.snippet?.tags
+                    .slice(0, 3)
+                    .map((tag, i) => (
+                      <li
+                        key={i}
+                        className="video-sidebar__hashtags__tag"
+                        onClick={() => dispatch(setVideos(tag, 8))}
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                </ul>
+              )}
 
             <div className="video-sidebar__suggestions">
               <div className="video-sidebar__suggestions_wrapper">
