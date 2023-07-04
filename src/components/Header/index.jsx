@@ -7,7 +7,7 @@ import createIcon from "../../assets/icons/createIcon.png";
 import notificationIcon from "../../assets/icons/notificationIcon.png";
 import { StyledIcon, StyledIconButton } from "../../styles/styled";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/YT-white.png";
 import miniLogo from "../../assets/images/YT_mini.png";
 import { toggleSideMenu } from "../../redux/actions/sideMenuAction";
@@ -16,11 +16,20 @@ const Header = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const { userInfo } = selector;
+  const Navigate = useNavigate();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   
   const handleChangeToggle = () => {
     dispatch(toggleSideMenu());
   };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+
+    let searchTxt = e.target.elements[0].value.trim().replaceAll(/\s+/g, "+");
+
+    Navigate("/search/" + searchTxt);
+  }
 
 
   useEffect(() => {
@@ -50,12 +59,19 @@ const Header = () => {
               <MenuIcon fontSize="inherit" />
             </IconButton>
             <Link to={"/"}>
-              <img src={`${screenWidth > 650 ? logo : miniLogo}`} className={`${screenWidth < 650 ? 'header-miniLogo' : ''}`} alt="" />
+              <img
+                src={`${screenWidth > 650 ? logo : miniLogo}`}
+                className={`${screenWidth < 650 ? "header-miniLogo" : ""}`}
+                alt=""
+              />
             </Link>
           </div>
 
           <div className="header__center">
-            <form className="header__search-form">
+            <form
+              className="header__search-form"
+              onSubmit={(e) => handleSearchSubmit(e)}
+            >
               <input
                 className="header__search-form__input"
                 type="text"

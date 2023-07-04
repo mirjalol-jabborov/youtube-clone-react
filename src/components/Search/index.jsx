@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "./Search.scss";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import DataCard from "../DataCard";
-// import { SET_VIDEOS } from "../../redux/types/resultDataTypes";
 import { setVideos } from "../../redux/actions/resultDataAction";
-import "./Home.scss";
+import DataCard from "../DataCard";
 import { isFixedSideMenu } from "../../redux/actions/sideMenuAction";
 
-const Home = () => {
+const Search = () => {
+  const searchTxt = useParams().searchId.replaceAll("+", " ");
   const selector = useSelector((state) => state);
+  const resultData = selector.resultData?.data;
   const dispatch = useDispatch();
-  const { resultData } = selector;
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    dispatch(setVideos(searchTxt, 10));
+
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
@@ -26,36 +29,31 @@ const Home = () => {
         fixed: screenWidth > 1000 ? false : true,
       })
     );
-    dispatch(setVideos("", 10));
 
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [, searchTxt]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(
       isFixedSideMenu({
         toggle: screenWidth > 1000 ? true : false,
         fixed: screenWidth > 1000 ? false : true,
       })
     );
-  }, [screenWidth])
+  }, [screenWidth]);
 
   return (
-    <div className="home">
-      {resultData.error && <p>{resultData.error}</p>}
-      {resultData.loading && <h1>Loading...</h1>}
-      {resultData?.data?.videos?.length > 0 && (
-        <div className="data-cards">
-          {resultData.data.videos.map((data, index) => {
-            return <DataCard key={index} data={data}></DataCard>;
-          })}
-        </div>
-      )}
-    </div>
+    <main className="search">
+      <div className="data-cards">
+        {resultData.videos.length > 0 &&
+          resultData.videos.map((el, i) => (
+            <DataCard key={i} data={el}></DataCard>
+          ))}
+      </div>
+    </main>
   );
 };
 
-export default Home;
+export default Search;

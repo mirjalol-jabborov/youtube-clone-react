@@ -40,12 +40,12 @@ const Video = () => {
   useEffect(() => {
     dispatch(isFixedSideMenu({ toggle: false, fixed: true }));
     dispatch(setVideo(videoId));
-    dispatch(setVideoComments(videoId, 1));
+    dispatch(setVideoComments(videoId, 7));
   }, []);
 
   useEffect(() => {
     dispatch(setVideo(videoId));
-    dispatch(setVideoComments(videoId, 1));
+    dispatch(setVideoComments(videoId, 7));
   }, [videoId]);
 
   useEffect(() => {
@@ -53,11 +53,11 @@ const Video = () => {
       dispatch(
         setVideos(
           arrayToString(resultData?.data?.video?.snippet?.tags.slice(0, 3)),
-          1
+          8
         )
       );
     else {
-      dispatch(setVideos(resultData?.data?.video?.snippet?.title, 1));
+      dispatch(setVideos(resultData?.data?.video?.snippet?.title, 8));
     }
   }, [resultData?.data?.video?.snippet?.tags]);
 
@@ -338,7 +338,7 @@ const Video = () => {
                         arrayToString(
                           resultData?.data?.video?.snippet?.tags.slice(0, 3)
                         ),
-                        1
+                        8
                       )
                     )
                   }
@@ -351,7 +351,7 @@ const Video = () => {
                     <li
                       key={i}
                       className="video-sidebar__hashtags__tag"
-                      onClick={() => dispatch(setVideos(tag, 1))}
+                      onClick={() => dispatch(setVideos(tag, 8))}
                     >
                       {tag}
                     </li>
@@ -361,7 +361,6 @@ const Video = () => {
 
             <div className="video-sidebar__suggestions">
               <div className="video-sidebar__suggestions_wrapper">
-                <h1>hi</h1>
                 {resultData?.data?.videos.length > 0 &&
                   resultData?.data?.videos?.map((video, i) => (
                     <MiniCard key={i} data={video} />

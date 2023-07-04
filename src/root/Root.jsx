@@ -5,6 +5,7 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import Collector from "../pages/Collector";
 import VideoPage from "../pages/VideoPage";
+import SearchPage from "../pages/SearchPage";
 
 const Root = () => {
   return (
@@ -23,7 +24,7 @@ const Root = () => {
             path="/search/:searchId"
             element={
               <Collector>
-                <h1>Search</h1>
+                <SearchPage/>
               </Collector>
             }
           ></Route>

@@ -335,6 +335,19 @@ $--video-info-width: 30%;
                 }
             }
         }
+
+        &__suggestions{
+            margin-top: 20px;
+            &_wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                :hover {
+                    cursor: pointer;
+                }
+            }
+        }
     }
 }
 
