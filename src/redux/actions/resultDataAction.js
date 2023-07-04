@@ -1,24 +1,21 @@
 import YT_API from "../../api/api";
-import {
-  SET_DATA,
-  SET_DATA_LOADING,
-} from "../types/resultDataTypes";
+import { SET_DATA, SET_DATA_LOADING } from "../types/resultDataTypes";
 
-export const setVideos = (videos = false) => {
+export const setVideos = (videos = false, count = 5) => {
   return async (dispatch) => {
     dispatch(setVideosLoading(true));
     dispatch(setVideosError(null));
     try {
-    const response = await YT_API.get("search", {
+      const response = await YT_API.get("search", {
         params: {
           part: "snippet",
-          maxResults: 10,
+          maxResults: count,
           q: videos ? videos : "",
           type: "video",
           videoDuration: "medium",
         },
       });
-      dispatch(setVideosSuccess({ videos: response.data.items}));
+      dispatch(setVideosSuccess({ videos: response.data.items }));
     } catch (error) {
       dispatch(setVideosError(error));
     } finally {
@@ -38,36 +35,35 @@ export const setVideo = (videoId) => {
           id: videoId,
         },
       });
-      dispatch(setVideosSuccess({ video: response.data.items[0]}));
+      dispatch(setVideosSuccess({ video: response.data.items[0] }));
     } catch (error) {
       dispatch(setVideosError(error));
     } finally {
       dispatch(setVideosLoading(false));
     }
   };
-}
+};
 
-export const setVideoComments = (videoId) => {
+export const setVideoComments = (videoId, count = 10) => {
   return async (dispatch) => {
     dispatch(setVideosLoading(true));
     dispatch(setVideosError(null));
-    try { 
+    try {
       const response = await YT_API.get("commentThreads", {
         params: {
           part: "snippet",
           videoId: videoId,
-          maxResults: 10,
+          maxResults: count,
         },
       });
-      dispatch(setVideosSuccess({ comments: response.data.items}));
+      dispatch(setVideosSuccess({ comments: response.data.items }));
     } catch (error) {
       dispatch(setVideosError(error));
     } finally {
       dispatch(setVideosLoading(false));
     }
   };
-}
-
+};
 
 export const setChannel = (channelId) => {
   return async (dispatch) => {
@@ -87,14 +83,14 @@ export const setChannel = (channelId) => {
       dispatch(setVideosLoading(false));
     }
   };
-}
+};
 
 export const setVideosLoading = (loading) => ({
   type: SET_DATA_LOADING,
   payload: loading,
 });
 
-export const setVideosSuccess = (videos) => ({    
+export const setVideosSuccess = (videos) => ({
   type: SET_DATA,
   payload: videos,
 });
