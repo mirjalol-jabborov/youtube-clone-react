@@ -7,8 +7,6 @@ $--video-wrapper-width: 70%;
 $--video-info-width: 30%;
 
 .video {
-    height: 2000px;
-
     &__wrapper {
         display: flex;
         // justify-content: space-between;
@@ -120,6 +118,10 @@ $--video-info-width: 30%;
                     display: flex;
                     align-items: center;
                     // gap: 20px;
+
+                    @media screen and (max-width: 415px) {
+                        display: none;
+                    }
                 }
 
                 &__like {
@@ -224,6 +226,10 @@ $--video-info-width: 30%;
                         line-height: 1.2rem;
                         cursor: pointer;
                     }
+
+                    @media screen and (max-width: 490px) {
+                        display: none;
+                    }
                 }
 
                 .video-info__more__statistics__hashtags__active {
@@ -304,6 +310,7 @@ $--video-info-width: 30%;
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+
             &__tag {
                 display: inline-block;
                 padding: 5px 15px;
@@ -328,5 +335,73 @@ $--video-info-width: 30%;
                 }
             }
         }
+    }
+}
+
+@media only screen and (max-width: 1160px) {
+    $--video-wrapper-width: 60%;
+    $--video-info-width: 40%;
+
+    .video {
+        &-wrapper {
+            width: $--video-wrapper-width;
+        }
+
+        &-sidebar {
+            width: $--video-info-width;
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    $--video-wrapper-width: 100%;
+
+    .video {
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-wrapper {
+            width: $--video-wrapper-width;
+            padding-right: 30px;
+        }
+
+        &-sidebar {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    $--video-height: 230px;
+    $--video-width: 100%;
+
+    .video-info__medium__right__share {
+        display: none;
+    }
+
+
+    .video {
+
+        &-media {
+            height: $--video-height;
+            width: $--video-width;
+            position: relative;
+
+            iframe {
+                width: 100%;
+                height: $--video-height;
+                position: relative;
+                z-index: 10;
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 530px) {
+    .video-info__medium__left__subscribe{
+        display: none;
     }
 }

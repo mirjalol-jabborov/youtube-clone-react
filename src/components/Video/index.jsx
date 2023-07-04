@@ -7,23 +7,17 @@ import {
   setChannel,
   setVideo,
   setVideoComments,
+  setVideos,
 } from "../../redux/actions/resultDataAction";
 import "./Video.scss";
 import numeral from "numeral";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import CopyAllIcon from "@mui/icons-material/CopyAll";
-import {
-  Avatar,
-  Button,
-  FormControl,
-  Input,
-  InputAdornment,
-  InputLabel,
-  TextField,
-} from "@mui/material";
+import { Button, FormControl, Input } from "@mui/material";
 import moment from "moment";
 import Comment from "../Comment";
+import MiniCard from "../MiniCard";
 
 const Video = () => {
   const [moreToggle, setMoreToggle] = React.useState(false);
@@ -37,21 +31,42 @@ const Video = () => {
   const { resultData } = selector;
   const { userInfo } = selector;
 
-  console.log(isFocused);
-
   const handleFocus = () => {
     setIsFocused(true);
   };
 
-  // const handleBlur = () => {
-  //   setIsFocused(false);
-  // };
+  console.log(resultData);
 
   useEffect(() => {
     dispatch(isFixedSideMenu({ toggle: false, fixed: true }));
     dispatch(setVideo(videoId));
-    dispatch(setVideoComments(videoId));
+    dispatch(setVideoComments(videoId, 1));
   }, []);
+
+  useEffect(() => {
+    dispatch(setVideo(videoId));
+    dispatch(setVideoComments(videoId, 1));
+  }, [videoId]);
+
+  useEffect(() => {
+    if (resultData?.data?.video?.snippet?.tags.length > 3)
+      dispatch(
+        setVideos(
+          arrayToString(resultData?.data?.video?.snippet?.tags.slice(0, 3)),
+          1
+        )
+      );
+    else {
+      dispatch(setVideos(resultData?.data?.video?.snippet?.title, 1));
+    }
+  }, [resultData?.data?.video?.snippet?.tags]);
+
+  // array to string
+  const arrayToString = (array) => {
+    if (array !== undefined) {
+      return array.join(", ");
+    }
+  };
 
   useEffect(() => {
     if (resultData?.data?.video?.snippet?.channelId) {
@@ -199,8 +214,11 @@ const Video = () => {
                   >
                     {resultData?.data?.video?.snippet?.tags
                       ?.slice(0, 3)
-                      .map((tag) => (
-                        <p className="video-info__more__statistics__hashtags__content">
+                      .map((tag, i) => (
+                        <p
+                          key={i}
+                          className="video-info__more__statistics__hashtags__content"
+                        >
                           #{tag}
                         </p>
                       ))}
@@ -301,23 +319,55 @@ const Video = () => {
                 </div>
 
                 <div className="video-info__comment__content">
-                  {resultData?.data?.comments?.map((comment) => (
-                    <Comment comment={comment} />
+                  {resultData?.data?.comments?.map((comment, i) => (
+                    <Comment key={i} comment={comment} />
                   ))}
                 </div>
               </div>
             </div>
           </div>
           <div className="video-sidebar">
-            <ul className="video-sidebar__hashtags">
-              <li className="video-sidebar__hashtags__tag active">
-                All
-              </li>
-              <li className="video-sidebar__hashtags__tag">Lil Peep</li>
-              <li className="video-sidebar__hashtags__tag">Lizzo</li>
-              <li className="video-sidebar__hashtags__tag">Cardi B</li>
-              <li className="video-sidebar__hashtags__tag">K-POP</li>
-            </ul>
+            {/* <ul className="video-sidebar__hashtags"></ul> */}
+            {resultData?.data?.video?.snippet?.tags.length > 3 && (
+              <ul className="video-sidebar__hashtags">
+                <li
+                  className="video-sidebar__hashtags__tag"
+                  onClick={() =>
+                    dispatch(
+                      setVideos(
+                        arrayToString(
+                          resultData?.data?.video?.snippet?.tags.slice(0, 3)
+                        ),
+                        1
+                      )
+                    )
+                  }
+                >
+                  All
+                </li>
+                {resultData?.data?.video?.snippet?.tags
+                  .slice(0, 3)
+                  .map((tag, i) => (
+                    <li
+                      key={i}
+                      className="video-sidebar__hashtags__tag"
+                      onClick={() => dispatch(setVideos(tag, 1))}
+                    >
+                      {tag}
+                    </li>
+                  ))}
+              </ul>
+            )}
+
+            <div className="video-sidebar__suggestions">
+              <div className="video-sidebar__suggestions_wrapper">
+                <h1>hi</h1>
+                {resultData?.data?.videos.length > 0 &&
+                  resultData?.data?.videos?.map((video, i) => (
+                    <MiniCard key={i} data={video} />
+                  ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
