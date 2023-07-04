@@ -1,0 +1,94 @@
+@import '/src/styles/variables.scss';
+
+.miniCard {
+    display: flex;
+    gap: 10px;
+    min-width: 360px;
+
+    @media screen and (max-width: 700px) {
+        min-width: 0;
+    }
+
+    &__thumbnail {
+        width: 160px;
+
+        img {
+            width: 160px;
+            height: 90px;
+            border-radius: 10px;
+        }
+    }
+
+    &__about {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &-title p {
+            font-size: 15px;
+        }
+
+        &-info {
+            font-size: 13px;
+            display: flex;
+            gap: 15px;
+
+            span {
+                position: relative;
+            }
+
+            span:last-child::before {
+                content: '•';
+                left: -10px;
+                position: absolute;
+                color: #ffffff;
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .miniCard {
+        &__thumbnail {
+            max-width: 120px;
+
+            img {
+                max-width: 120px;
+                max-height: 75px;
+                border-radius: 5px;
+            }
+        }
+
+        &__about {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            &-title p {
+                font-size: 13.5px;
+            }
+
+            &-info {
+                font-size: 12px;
+                display: flex;
+                gap: 5px;
+
+                span {
+                    position: relative;
+                    white-space: nowrap;
+                }
+
+                span:last-child::before {
+                    content: '•';
+                    left: -10px;
+                    position: absolute;
+                    color: #ffffff;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+
+}
