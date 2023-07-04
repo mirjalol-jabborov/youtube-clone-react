@@ -3,11 +3,23 @@
 $--video-height: 500px;
 $--video-width: 100%;
 
+$--video-wrapper-width: 70%;
+$--video-info-width: 30%;
+
 .video {
     height: 2000px;
 
+    &__wrapper {
+        display: flex;
+        // justify-content: space-between;
+    }
+
     &-wrapper {
-        max-width: 70%;
+        width: $--video-wrapper-width;
+    }
+
+    &-sidebar {
+        width: $--video-info-width;
     }
 
     &-media {
@@ -99,15 +111,17 @@ $--video-width: 100%;
                 }
             }
 
-            &__right{
+            &__right {
                 display: flex;
                 align-items: center;
                 gap: 20px;
+
                 &__likes {
                     display: flex;
                     align-items: center;
                     // gap: 20px;
                 }
+
                 &__like {
                     display: flex !important;
                     width: 85px;
@@ -115,8 +129,10 @@ $--video-width: 100%;
                     border-bottom-left-radius: 25px;
                     gap: 7px;
                 }
-                
-                &__like, &__dislike, &__share {
+
+                &__like,
+                &__dislike,
+                &__share {
                     display: inline-block;
                     height: 38px;
                     display: flex;
@@ -124,36 +140,39 @@ $--video-width: 100%;
                     justify-content: center;
                     background-color: $--black-38;
                     cursor: pointer;
-                    
+
                     &:hover {
                         background-color: $--black-47;
                     }
                 }
-                &__dislike{
+
+                &__dislike {
                     width: 45px;
                     border-top-right-radius: 25px;
                     border-bottom-right-radius: 25px;
                     position: relative;
-                    
+
                     &::before {
                         content: '';
                         position: absolute;
                         width: 1px;
                         height: 20px;
                         background-color: $--black-47;
-                        left: 0; 
+                        left: 0;
                     }
                 }
 
-                &__share{ 
+                &__share {
                     cursor: pointer;
                     border-radius: 25px;
                     width: 85px;
+
                     &__icon {
                         width: 25px;
                         height: 25px;
                     }
-                    &__text{
+
+                    &__text {
                         // font-family: "YouTube Sans", "Roboto", sans-serif;
                         font-size: 0.87rem;
                         font-weight: 600;
@@ -163,7 +182,7 @@ $--video-width: 100%;
             }
         }
 
-        &__more{
+        &__more {
             width: 100%;
             background-color: $--black-38;
             padding: 15px;
@@ -178,10 +197,10 @@ $--video-width: 100%;
 
             &:active {
                 background-color: $--black-38;
-                border : 1px solid $--black-47;
+                border: 1px solid $--black-47;
             }
 
-            &__statistics{
+            &__statistics {
                 display: flex;
                 align-items: center;
                 gap: 15px;
@@ -206,6 +225,7 @@ $--video-width: 100%;
                         cursor: pointer;
                     }
                 }
+
                 .video-info__more__statistics__hashtags__active {
                     .video-info__more__statistics__hashtags__content {
                         color: $--blue;
@@ -213,7 +233,7 @@ $--video-width: 100%;
                 }
             }
 
-            &__description{
+            &__description {
                 // font-family: "YouTube Sans", "Roboto", sans-serif;
                 font-size: 0.9rem;
                 font-weight: 400;
@@ -222,13 +242,90 @@ $--video-width: 100%;
             }
 
         }
+
         &__comment {
-            // background: red;
-            
-            &__content{
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+
+            &__top {
+                &__title {
+                    // font-family: "YouTube Sans", "Roboto", sans-serif;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: $--text-primary;
+                    // margin: 20px 0;
+                    display: inline-block;
+                }
+            }
+
+            &__input {
+                display: flex;
+                // align-items: center;
+                gap: 10px;
+
+                &__icon {
+                    img {
+                        width: 43px;
+                        height: 43px;
+                        border-radius: 50%;
+                    }
+                }
+
+                &__content {
+                    position: relative;
+                    top: -10px;
+                    width: 100%;
+
+                    &__button {
+                        float: right;
+                        display: flex;
+                        align-items: center;
+                        gap: 20px;
+                    }
+                }
+            }
+
+            &__content {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+            }
+        }
+    }
+
+    &-sidebar {
+        padding: 0 20px;
+        padding-top: 10px;
+
+        // background: #000;
+        &__hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            &__tag {
+                display: inline-block;
+                padding: 5px 15px;
+                border-radius: 7px;
+                background-color: $--black-38;
+                color: $--text-primary;
+                cursor: pointer;
+                transition: all 0.2s;
+                font-size: 14px;
+
+                &.active {
+                    background-color: $--white;
+                    color: $--black;
+
+                    &:hover {
+                        background-color: $--grey;
+                    }
+                }
+
+                &:hover {
+                    background-color: $--black-47;
+                }
             }
         }
     }

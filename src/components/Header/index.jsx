@@ -1,5 +1,5 @@
 import { IconButton } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./Header.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,17 +9,34 @@ import { StyledIcon, StyledIconButton } from "../../styles/styled";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/YT-white.png";
+import miniLogo from "../../assets/images/YT_mini.png";
 import { toggleSideMenu } from "../../redux/actions/sideMenuAction";
 
 const Header = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const { userInfo } = selector;
-
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   
   const handleChangeToggle = () => {
     dispatch(toggleSideMenu());
   };
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    // Add event listener to window resize event
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <header id="header" className="header">
       <nav className="header-nav">
@@ -33,7 +50,7 @@ const Header = () => {
               <MenuIcon fontSize="inherit" />
             </IconButton>
             <Link to={"/"}>
-              <img src={logo} alt="" />
+              <img src={`${screenWidth > 650 ? logo : miniLogo}`} className={`${screenWidth < 650 ? 'header-miniLogo' : ''}`} alt="" />
             </Link>
           </div>
 
