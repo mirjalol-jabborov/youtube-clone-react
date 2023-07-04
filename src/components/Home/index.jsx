@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DataCard from "../DataCard";
 // import { SET_VIDEOS } from "../../redux/types/resultDataTypes";
@@ -10,15 +10,43 @@ const Home = () => {
   const selector = useSelector((state) => state);
   const dispatch = useDispatch();
   const { resultData } = selector;
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   React.useEffect(() => {
-    dispatch(isFixedSideMenu({ toggle: true, fixed: false }));
-    console.log("home" + selector.sideMenu.isFixed);
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    // Add event listener to window resize event
+    window.addEventListener("resize", handleResize);
+
+    dispatch(
+      isFixedSideMenu({
+        toggle: screenWidth > 1000 ? true : false,
+        fixed: screenWidth > 1000 ? false : true,
+      })
+    );
+    dispatch(setVideos("", 3));
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
+  React.useEffect(() => {
+    dispatch(
+      isFixedSideMenu({
+        toggle: screenWidth > 1000 ? true : false,
+        fixed: screenWidth > 1000 ? false : true,
+      })
+    );
+  }, [screenWidth])
+
   const handleClick = () => {
-    dispatch(setVideos("Lil peep"));
+    dispatch(setVideos("", 10));
   };
+
   return (
     <div className="home">
       {resultData.error && <p>{resultData.error}</p>}
