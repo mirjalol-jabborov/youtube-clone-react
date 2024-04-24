@@ -19,7 +19,6 @@ const DataCard = ({ data }) => {
       },
     })
       .then((response) => {
-        // console.log(response);
         setChannelInfo(response.data.items[0]);
       })
       .catch((error) => {
@@ -35,7 +34,6 @@ const DataCard = ({ data }) => {
       },
     })
       .then((response) => {
-        // console.log(response);
         setVideoInfo(response.data.items[0]);
       })
       .catch((error) => {
@@ -67,7 +65,6 @@ const DataCard = ({ data }) => {
           }}
         >
           <p className="data-card__body-right__title">
-            {/* {data?.snippet.title}// */}
             {data?.snippet.title.length < 50
               ? data?.snippet.title
               : data?.snippet.title.substring(0, 65) + "..."}
@@ -78,8 +75,6 @@ const DataCard = ({ data }) => {
               <p>{data?.snippet?.channelTitle}</p>
             </div>
             <div className="data-card__body-right__footer__bottom">
-              {/* <p>53K views</p>
-                <p>1 years ago</p> */}
               <p>
                 {numeral(videoInfo?.statistics?.viewCount).format("0.a")} views
               </p>

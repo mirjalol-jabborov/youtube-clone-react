@@ -5,7 +5,6 @@ import sideMenuReducer from "./sideMenuReducer";
 import resultDataReducer from "./resultDataReducer";
 
 export const rootReducer = combineReducers({
-    // Add reducers here
     userInfo: userInfoReducer,
     auth: authReducer,
     sideMenu: sideMenuReducer,

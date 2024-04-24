@@ -10,9 +10,6 @@ const initialState = {
     video: {},
     channel: {},
     comments: [],
-
-    // playlists: [],=
-    // channels: [],
   },
 
   loading: false,

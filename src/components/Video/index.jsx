@@ -35,8 +35,6 @@ const Video = () => {
     setIsFocused(true);
   };
 
-  console.log(resultData);
-
   useEffect(() => {
     dispatch(isFixedSideMenu({ toggle: false, fixed: true }));
     dispatch(setVideo(videoId));

@@ -1,1 +1,1 @@
-export const SET_USER_INFO = 'USER/SET_USER_INFO'
+export const SET_USER_INFO = 'USER/SET_USER_INFO';

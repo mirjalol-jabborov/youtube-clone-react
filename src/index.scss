@@ -5,12 +5,6 @@
   src: url('././assets/fonts/Roboto-Regular.ttf') format('truetype');
 }
 
-
-// @font-face {
-//   font-family: 'Roboto';
-//   src: url('././assets/fonts/Roboto-Medium.ttf') format('truetype');
-// }
-
 * {
   margin: 0;
   padding: 0;
@@ -29,10 +23,6 @@ body {
   margin: 0 auto; 
 }
 
-
-
-
-
 /* Global scroll bar style */
 ::-webkit-scrollbar {
   width: 10px;
@@ -50,7 +40,3 @@ body {
     background: #4A4A4A;
   }
 }
-
-// :hover::-webkit-scrollbar-thumb {
-//   background: red;
-// }

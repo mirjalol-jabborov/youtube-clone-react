@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import "./MiniCard.scss"
 
 const MiniCard = ({ data }) => {
-  // console.log(data);
   const navigate = useNavigate();
   console.log(data);
   return (

@@ -1,6 +1,4 @@
-import { HomeMaxOutlined } from "@mui/icons-material";
 import React from "react";
-import HomeIcon from "@mui/icons-material/Home";
 
 import "./SideMenu.scss";
 

@@ -6,17 +6,6 @@ import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 import OndemandVideoOutlinedIcon from "@mui/icons-material/OndemandVideoOutlined";
 import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
-import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
-
-
-// import WhatshotIcon from "@mui/icons-material/Whatshot";
-// import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
-// import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
-// import HistoryIcon from "@mui/icons-material/History";
-// import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
-// import WatchLaterIcon from "@mui/icons-material/WatchLater";
-// import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
-// import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 
 export const navbarLinks = {
     main: [

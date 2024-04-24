@@ -12,8 +12,6 @@ const Collector = ({ children }) => {
 
   const sideMenuWidth = toggle ? "230px" : "70px";
 
-  // console.log(selector);
-
   const dispatch = useDispatch();
 
   return (

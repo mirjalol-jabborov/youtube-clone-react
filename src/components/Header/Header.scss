@@ -32,7 +32,6 @@
 
         img {
             width: 100px;
-            // height: 100px;
         }
 
         img.header-miniLogo {
@@ -48,7 +47,6 @@
     &__search-form {
         display: flex;
         align-items: center;
-        // gap: 10px;
 
         &__input {
             border: 1px solid $--black-32;
@@ -80,16 +78,7 @@
             border-left: none;
             border-radius: 0 22px 22px 0;
             color: $--grey;
-
-
-            // &:hover {
-            //     background-color: #EBEBEB;
-            // }
         }
-
-
-
-
     }
 
     &__user-img {
@@ -97,10 +86,7 @@
         height: 35px;
         border-radius: 50%;
         overflow: hidden;
-        // margin-right: 10px;
     }
-
-
 }
 
 @media only screen and (max-width: 850px) {

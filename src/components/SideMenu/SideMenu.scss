@@ -1,7 +1,6 @@
 @import '../../styles/variables.scss';
 
 .side-menu {
-    // background: #000;
     height: 100%;
     padding: 0 15px;
 
@@ -20,10 +19,9 @@
 
         .item-link {
             text-decoration: none;
-            // color: #fff;
 
             &.active .side-menu__items__item {
-                background-color: $--black-18; //#383838
+                background-color: $--black-18;
 
                 &:hover {
                     background-color: $--black-32 !important;
@@ -41,7 +39,6 @@
             padding: 10px 8px;
             border-radius: 10px;
             cursor: pointer;
-            // margin: 10px 0;
 
             &:hover {
 

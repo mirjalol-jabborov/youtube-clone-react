@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DataCard from "../DataCard";
-// import { SET_VIDEOS } from "../../redux/types/resultDataTypes";
 import { setVideos } from "../../redux/actions/resultDataAction";
 import "./Home.scss";
 import { isFixedSideMenu } from "../../redux/actions/sideMenuAction";
